@@ -1,40 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aadamik <aadamik@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/14 18:32:00 by aadamik           #+#    #+#             */
-/*   Updated: 2023/11/16 22:25:49 by aadamik          ###   ########.fr       */
+/*   Created: 2023/11/16 23:05:59 by aadamik           #+#    #+#             */
+/*   Updated: 2023/11/16 23:41:53 by aadamik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
+#include <stdlib.h>
 
-void	*ft_memset(void *str, int c, size_t n)
+void	*ft_calloc(size_t count, size_t size)
 {
 	int	i;
+	int	ptr;
 
+	ptr = malloc(count * size);
+	if (ptr == NULL)
+		return (NULL);
 	i = 0;
-	while (i < n)
+	while (i < count * size)
 	{
-		((unsigned char *)str)[i] = c;
+		ptr[i] = 0;
 		i++;
 	}
-	return (str);
+	return (ptr);
 }
-
-// int main () 
-// {
-//    char str[50];
-
-//    strcpy(str,"This is string.h library function");
-//    puts(str);
-//    memset(str,'$',7);
-//    puts(str);
-//    ft_memset(str,'$',7);
-//    puts(str);
-//    return(0);
-// }

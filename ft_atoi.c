@@ -1,40 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aadamik <aadamik@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/14 18:32:00 by aadamik           #+#    #+#             */
-/*   Updated: 2023/11/16 22:25:49 by aadamik          ###   ########.fr       */
+/*   Created: 2023/11/16 22:13:24 by aadamik           #+#    #+#             */
+/*   Updated: 2023/11/16 23:38:08 by aadamik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include <string.h>
+#include <stdlib.h>
 
-void	*ft_memset(void *str, int c, size_t n)
+int	ft_atoi(const char *str)
 {
+	int	nb;
 	int	i;
+	int	sign;
 
+	nb = 0;
+	sign = 1;
 	i = 0;
-	while (i < n)
+	while (str[i] >= 9 && str[i] <= 13 || str[i] == 32)
+		i++;
+	if (str[i] == 43 || str[i] == 45)
 	{
-		((unsigned char *)str)[i] = c;
+		if (str[i] == 45)
+			sign = -1;
 		i++;
 	}
-	return (str);
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		nb = 10 * nb + str[i] - '0';
+		i++;
+	}
+	return (nb * sign);
 }
 
-// int main () 
+// int main ()
 // {
-//    char str[50];
-
-//    strcpy(str,"This is string.h library function");
-//    puts(str);
-//    memset(str,'$',7);
-//    puts(str);
-//    ft_memset(str,'$',7);
-//    puts(str);
-//    return(0);
+// 	printf("%d\n%d\n", atoi("  --324abs432"), ft_atoi("  --324abs432"));
+// 	return (0);
 // }
