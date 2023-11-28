@@ -1,45 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aadamik <aadamik@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/16 22:13:24 by aadamik           #+#    #+#             */
-/*   Updated: 2023/11/16 23:59:39 by aadamik          ###   ########.fr       */
+/*   Created: 2023/11/27 19:58:28 by aadamik           #+#    #+#             */
+/*   Updated: 2023/11/27 20:26:43 by aadamik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <stdio.h>
-#include <stdlib.h>
 
-int	ft_atoi(const char *str)
+int	ft_lstsize(t_list *lst)
 {
-	int	nb;
-	int	i;
-	int	sign;
+	t_list	*curr;
+	int		i;
 
-	nb = 0;
-	sign = 1;
 	i = 0;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
-		i++;
-	if (str[i] == 43 || str[i] == 45)
+	curr = lst;
+	while (curr != NULL)
 	{
-		if (str[i] == 45)
-			sign = -1;
 		i++;
+		curr = curr->next;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		nb = 10 * nb + str[i] - '0';
-		i++;
-	}
-	return (nb * sign);
+	return (i);
 }
 
-// int main ()
+// int main()
 // {
-// 	printf("%d\n%d\n", atoi("  --324abs432"), ft_atoi("  --324abs432"));
+// 	t_list	*curr;
+// 	t_list	*new;
+// 	t_list	*new1;
+
+// 	new = ft_lstnew((void *)11);
+// 	new1 = ft_lstnew((void *)12);
+// 	ft_lstadd_front(&new1, new);
+// 	curr = new;
+// 	while (curr != NULL)
+// 	{
+// 		printf("curr = %d\n", (int)curr->content);
+// 		curr = curr->next;
+// 	}
+// 	printf("i = %d\n", ft_lstsize(new));
 // 	return (0);
 // }

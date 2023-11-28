@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aadamik <aadamik@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/15 16:35:29 by aadamik           #+#    #+#             */
-/*   Updated: 2023/11/25 21:10:45 by aadamik          ###   ########.fr       */
+/*   Created: 2023/11/22 21:08:47 by aadamik           #+#    #+#             */
+/*   Updated: 2023/11/22 23:56:57 by aadamik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
-char	*ft_strrchr(const char *str, int c)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int	i;
+	char			*str;
+	unsigned int	i;
 
+	str = ft_strdup(((char *)s));
+	if (!str)
+		return (NULL);
 	i = 0;
-	while (str[i] != '\0')
+	while (str[i])
 	{
+		str[i] = (*f)(i, str[i]);
 		i++;
 	}
-	while (i >= 0)
-	{
-		if (str[i] == (char)c)
-			return (&((char *)str)[i]);
-		i--;
-	}
-	return (NULL);
+	return (str);
 }

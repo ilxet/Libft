@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aadamik <aadamik@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/15 16:35:29 by aadamik           #+#    #+#             */
-/*   Updated: 2023/11/25 21:10:45 by aadamik          ###   ########.fr       */
+/*   Created: 2023/11/28 01:06:21 by aadamik           #+#    #+#             */
+/*   Updated: 2023/11/28 01:25:57 by aadamik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
-char	*ft_strrchr(const char *str, int c)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	int	i;
+	t_list	*new_list;
+	void	*content;
 
-	i = 0;
-	while (str[i] != '\0')
+	(void)del;
+	new_list = NULL;
+	while (lst != NULL)
 	{
-		i++;
+		content = f(lst->content);
+		ft_lstadd_back(&new_list, ft_lstnew(content));
+		lst = lst->next;
 	}
-	while (i >= 0)
-	{
-		if (str[i] == (char)c)
-			return (&((char *)str)[i]);
-		i--;
-	}
-	return (NULL);
+	return (new_list);
 }

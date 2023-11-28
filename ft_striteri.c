@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aadamik <aadamik@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/15 16:35:29 by aadamik           #+#    #+#             */
-/*   Updated: 2023/11/25 21:10:45 by aadamik          ###   ########.fr       */
+/*   Created: 2023/11/22 21:27:31 by aadamik           #+#    #+#             */
+/*   Updated: 2023/11/22 23:51:03 by aadamik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-
-char	*ft_strrchr(const char *str, int c)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
 	int	i;
 
 	i = 0;
-	while (str[i] != '\0')
+	while (s[i] != '\0')
 	{
+		(*f)(i, &s[i]);
 		i++;
 	}
-	while (i >= 0)
-	{
-		if (str[i] == (char)c)
-			return (&((char *)str)[i]);
-		i--;
-	}
-	return (NULL);
 }

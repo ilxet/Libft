@@ -1,45 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aadamik <aadamik@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/16 22:13:24 by aadamik           #+#    #+#             */
-/*   Updated: 2023/11/16 23:59:39 by aadamik          ###   ########.fr       */
+/*   Created: 2023/11/18 15:19:51 by aadamik           #+#    #+#             */
+/*   Updated: 2023/11/21 21:59:29 by aadamik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdlib.h>
+#include "libft.h"
+#include <stdio.h>
 
-int	ft_atoi(const char *str)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int	nb;
-	int	i;
-	int	sign;
+	int		i;
+	int		j;
+	char	*s1s2;
 
-	nb = 0;
-	sign = 1;
+	s1s2 = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (s1s2 == NULL)
+		return (NULL);
 	i = 0;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
-		i++;
-	if (str[i] == 43 || str[i] == 45)
+	while (s1[i] != '\0')
 	{
-		if (str[i] == 45)
-			sign = -1;
+		s1s2[i] = s1[i];
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
+	j = 0;
+	while (s2[j] != '\0')
 	{
-		nb = 10 * nb + str[i] - '0';
+		s1s2[i] = s2[j];
 		i++;
+		j++;
 	}
-	return (nb * sign);
+	s1s2[i] = '\0';
+	return (s1s2);
 }
 
-// int main ()
+// int main()
 // {
-// 	printf("%d\n%d\n", atoi("  --324abs432"), ft_atoi("  --324abs432"));
+// 	char *s1 = "qwe";
+// 	char *s2 = "asd";
+// 	printf("%s", ft_strjoin(s1, s2));
 // 	return (0);
 // }

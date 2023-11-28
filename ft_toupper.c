@@ -6,11 +6,11 @@
 /*   By: aadamik <aadamik@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 15:28:35 by aadamik           #+#    #+#             */
-/*   Updated: 2023/11/15 15:33:19 by aadamik          ###   ########.fr       */
+/*   Updated: 2023/11/17 01:48:46 by aadamik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_toupper(int c);
+int	ft_toupper(int c)
 {
 	if (c >= 97 && c <= 122)
 		c -= 32;

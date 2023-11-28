@@ -1,45 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aadamik <aadamik@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/16 22:13:24 by aadamik           #+#    #+#             */
-/*   Updated: 2023/11/16 23:59:39 by aadamik          ###   ########.fr       */
+/*   Created: 2023/11/27 19:06:26 by aadamik           #+#    #+#             */
+/*   Updated: 2023/11/27 19:50:55 by aadamik          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <stdio.h>
-#include <stdlib.h>
 
-int	ft_atoi(const char *str)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	int	nb;
-	int	i;
-	int	sign;
-
-	nb = 0;
-	sign = 1;
-	i = 0;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
-		i++;
-	if (str[i] == 43 || str[i] == 45)
-	{
-		if (str[i] == 45)
-			sign = -1;
-		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		nb = 10 * nb + str[i] - '0';
-		i++;
-	}
-	return (nb * sign);
+	new->next = *lst;
+	*lst = new;
 }
 
 // int main ()
 // {
-// 	printf("%d\n%d\n", atoi("  --324abs432"), ft_atoi("  --324abs432"));
-// 	return (0);
+// 	t_list	*curr;
+// 	t_list	*new;
+
+// 	new = ft_lstnew((void*)1);
+// 	curr = ft_lstnew((void*)15);
+// 	ft_lstadd_front(&curr, new);
+
+// 	printf("%d\n", (int)new->content);
+// 	printf("%d\n", (int)new->next->content);
+// 	return(0);
 // }
